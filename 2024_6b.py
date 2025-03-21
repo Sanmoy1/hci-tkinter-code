@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 class answer:
     def __init__(self,top):
         self.top=top
@@ -17,6 +18,7 @@ class answer:
         self.bt4.grid(padx=3,pady=3)
         self.display=Label(self.top,text="The result is displayed")
         self.display.grid(padx=3,pady=3)
+        
     def onclick1(self):
         para=self.para.get("1.0",END)
         para=para.split(".")
@@ -28,7 +30,11 @@ class answer:
         for i in para:
             count+=1
         self.display.config(text=f"Count of words: {count}")
-    def onclick3(self):#print the unique words in the para
+        uniqueWords=set(para)
+        uniqueCount=len(uniqueWords)
+        messagebox.showinfo("Unique words",f"Unique words: {uniqueCount}")
+
+    def onclick3(self):
         editfield=self.editfield.get()
         para=self.para.get("1.0",END)
         para=para.split(" ")
